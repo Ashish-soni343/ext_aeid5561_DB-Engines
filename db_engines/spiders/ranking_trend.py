@@ -17,7 +17,7 @@ class RankingTrendSpider(scrapy.Spider):
 
     # Here all Mandatory Fields Data are defined under main class that will be called using "self."
     context_identifier = "DB-Engines"
-    execution_id = ""  # This will be taken automatically from zyte, for now this is hardcoded
+    execution_id = "621097/1"  # This will be taken automatically from zyte, for now this is hardcoded
     feed_code = "aeid5561"
     record_create_by = "aeid5561_ranking_trend"
     record_create_dt = datetime.datetime.utcnow().strftime('%Y-%m-%d %T')
