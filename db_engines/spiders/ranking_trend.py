@@ -2,6 +2,7 @@
 import scrapy
 import json
 import datetime
+from os import environ
 from ..items import DbEnginesItem
 
 
@@ -17,7 +18,7 @@ class RankingTrendSpider(scrapy.Spider):
 
     # Here all Mandatory Fields Data are defined under main class that will be called using "self."
     context_identifier = "DB-Engines"
-    execution_id = "621097"  # This will be taken automatically from zyte, for now this is hardcoded
+    execution_id = ""  # This is taken automatically from zyte
     feed_code = "aeid5561"
     record_create_by = "aeid5561_ranking_trend"
     record_create_dt = datetime.datetime.utcnow().strftime('%Y-%m-%d %T')
@@ -122,7 +123,7 @@ class RankingTrendSpider(scrapy.Spider):
             item["Ranking"] = ranking[i]
             item["Visible"] = visible[i]
             item["Context_identifier"] = self.context_identifier
-            item["Execution_id"] = self.execution_id
+            item['Execution_id'] = environ.get('SHUB_JOBKEY', None)
             item["Feed_code"] = self.feed_code
             item["Record_create_by"] = self.record_create_by
             item["Record_create_dt"] = self.record_create_dt
